@@ -7,7 +7,7 @@ gunicorn的配置文件
 # gevent的猴子魔法 变成非阻塞
 gevent.monkey.patch_all()
 
-bind = '0.0.0.0:8080'
+bind = '0.0.0.0:8081'
 
 #日志级别，这个日志级别指的是错误日志的级别，而访问日志的级别无法设置
 loglevel = 'debug'
