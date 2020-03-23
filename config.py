@@ -140,6 +140,7 @@ class ProductionConfig(Config):
     SQLALCHEMY_POOL_RECYCLE = 1800
 
 
+##如部署在服务器上，需使用mysql，则'default'改为 ProductionConfig,
 config = {
 
     'default': DevelopmentConfig,
