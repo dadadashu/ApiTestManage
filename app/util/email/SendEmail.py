@@ -27,7 +27,7 @@ class SendEmail(object):
         part = MIMEText(self.file, _subtype='html', _charset='utf-8')
 
         message.attach(part)
-        message['From'] = Header("autotest", 'utf-8')
+        message['From'] = Header("自动化测试报告", 'utf-8')
         message['To'] = Header(''.join(self.to_list), 'utf-8')
         subject = self.taskname #'任务名称为邮件名'
         message['Subject'] = Header(subject, 'utf-8')
