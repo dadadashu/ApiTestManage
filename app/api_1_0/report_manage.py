@@ -114,10 +114,15 @@ def find_report():
             return jsonify({'msg': '没有该用例报告', 'status': 0})
     else:
         _data = Report.query.filter_by(project_id=project_id)
+
+    #查询项目名称
+    _project_name = Project.query.filter_by(id=project_id).first().name
+
+
     pagination = _data.order_by(Report.create_time.desc()).paginate(page, per_page=per_page, error_out=False)
     items = pagination.items
     total = pagination.total
-    end_data = [{'name': c.case_names, 'project_id': project_id, 'id': c.id, 'read_status': c.read_status,
+    end_data = [{'project_name': _project_name,'name': c.case_names, 'project_id': project_id, 'id': c.id, 'read_status': c.read_status,
                  'performer': c.performer, 'project_name': Project.query.filter_by(id=project_id).first().name,
                  'create_time': str(c.create_time).split('.')[0]} for c in items]
 
