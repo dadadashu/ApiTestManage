@@ -8,8 +8,11 @@ from . import exceptions, utils
 from .compat import basestring, builtin_str, numeric_types, str
 
 variable_regexp = r"\$([\w_]+)"
-function_regexp = r"\$\{([\w_]+\([\$\w\.\-/_ =,]*\))\}"
-function_regexp_compile = re.compile(r"^([\w_]+)\(([\$\w\.\-/_ =,]*)\)$")
+function_regexp = r"\${([\w]+\([\w\./_ =,\(\)\"\']*\))}"
+#只需要在\$\w\.\-/_ =,\(\)\"\'  补充各种可能存在个字符类型
+function_regexp_compile = re.compile(r"^([\w_]+)\(([\$\w\.\-/_ =,\(\)\"\']*)\)$")
+
+
 
 
 def parse_string_value(str_value):
