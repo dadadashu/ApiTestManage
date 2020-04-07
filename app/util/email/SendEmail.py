@@ -27,14 +27,15 @@ class SendEmail(object):
         part = MIMEText(self.file, _subtype='html', _charset='utf-8')
 
         message.attach(part)
-        message['From'] = Header("接口自动化测试平台", 'utf-8')
+        message['From'] = Header("autotest", 'utf-8')
         message['To'] = Header(''.join(self.to_list), 'utf-8')
         subject = self.taskname #'任务名称为邮件名'
         message['Subject'] = Header(subject, 'utf-8')
 
         # 添加附件
         att1 = MIMEApplication(self.file)
-        att1.add_header('Content-Disposition', 'attachment', filename=('gbk', '', self.taskname+'测试报告.html'))
+        #att1.add_header('Content-Disposition', 'attachment', filename=('gbk', '', self.taskname+'测试报告.html'))
+        att1.add_header('Content-Disposition', 'attachment', filename=('gbk', '', '接口测试报告.html'))
         message.attach(att1)
 
         try:
