@@ -11,7 +11,7 @@ from ..util.report.report import render_html_report
 from flask_login import current_user
 
 
-def aps_test(project_id, case_ids, send_address=None, send_password=None, task_to_address=None, performer='无'):
+def aps_test(project_id, case_ids, send_address=None, send_password=None, task_to_address=None, performer='无', task_name=None):
     # global db
     # db.session.remove()
     # db.create_scoped_session()
@@ -25,7 +25,7 @@ def aps_test(project_id, case_ids, send_address=None, send_password=None, task_t
         print(111111111)
         task_to_address = task_to_address.split(',')
         file = render_html_report(res)
-        s = SendEmail(send_address, send_password, task_to_address, file)
+        s = SendEmail(send_address, send_password, task_to_address, file, task_name)
         s.send_email()
     db.session.rollback()  # 把连接放回连接池，不知道为什么定时任务跑完不会自动放回去，导致下次跑的时候，mysql连接超时断开报错
     return d.new_report_id
@@ -73,7 +73,7 @@ def start_task():
     cases_id = get_case_id(_data.project_id, json.loads(_data.set_id), json.loads(_data.case_id))
     scheduler.add_job(func=aps_test, trigger='cron', misfire_grace_time=60, coalesce=False,
                       args=[_data.project_id, cases_id, _data.task_send_email_address, _data.email_password,
-                            _data.task_to_email_address, User.query.filter_by(id=current_user.id).first().name],
+                            _data.task_to_email_address, User.query.filter_by(id=current_user.id).first().name, _data.task_name],
                       id=str(ids), **config_time)  # 添加任务
     _data.status = '启动'
     db.session.commit()
