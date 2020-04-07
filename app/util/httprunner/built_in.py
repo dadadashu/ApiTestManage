@@ -56,22 +56,22 @@ def multipart_content_type(multipart_encoder):
 """ built-in comparators
 """
 def equals(check_value, expect_value):
-    assert check_value == expect_value
+    assert check_value == float(expect_value)
 
 def less_than(check_value, expect_value):
-    assert check_value < expect_value
+    assert check_value < float(expect_value)
 
 def less_than_or_equals(check_value, expect_value):
-    assert check_value <= expect_value
+    assert check_value <= float(expect_value)
 
 def greater_than(check_value, expect_value):
-    assert check_value > expect_value
+    assert check_value > float(expect_value)
 
 def greater_than_or_equals(check_value, expect_value):
-    assert check_value >= expect_value
+    assert check_value >= float(expect_value)
 
 def not_equals(check_value, expect_value):
-    assert check_value != expect_value
+    assert check_value != float(expect_value)
 
 def string_equals(check_value, expect_value):
     assert builtin_str(check_value) == builtin_str(expect_value)
