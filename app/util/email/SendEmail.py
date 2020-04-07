@@ -23,11 +23,13 @@ class SendEmail(object):
         # 第三方 SMTP 服务
 
         message = MIMEMultipart()
-        part = MIMEText('Dear all:\n       附件为接口自动化测试报告，此为自动发送邮件，请勿回复，谢谢！', 'plain', 'utf-8')
+        #part = MIMEText('Dear all:\n       附件为接口自动化测试报告，此为自动发送邮件，请勿回复，谢谢！', 'plain', 'utf-8')
+        part = MIMEText(self.file, _subtype='html', _charset='utf-8')
+
         message.attach(part)
         message['From'] = Header("接口自动化测试平台", 'utf-8')
         message['To'] = Header(''.join(self.to_list), 'utf-8')
-        subject = self.taskname #'接口测试邮件'
+        subject = self.taskname #'任务名称为邮件名'
         message['Subject'] = Header(subject, 'utf-8')
 
         # 添加附件
