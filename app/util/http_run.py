@@ -251,6 +251,7 @@ class RunCase(object):
         self.TEST_DATA = {'testsuites': [self.TEST_DATA], 'parameters': [123456, 12345, 1234]}
         print(self.TEST_DATA)
         runner.run(self.TEST_DATA)
+        print("测试用例数据===> {}".format(self.TEST_DATA))
         jump_res = json.dumps(runner._summary, ensure_ascii=False, default=encode_object, cls=JSONEncoder)
         # scheduler.app.logger.info('返回数据：{}'.format(jump_res))
         return jump_res
