@@ -215,7 +215,8 @@ def parse_function(content):
     args_list = args_str.split(',')
     for arg in args_list:
         arg = arg.strip()
-        if '=' in arg:
+        #对于参数里面有=号的会报错，如 ${test(1=1)}，将下面=号改为==
+        if '==' in arg:
             key, value = arg.split('=')
             function_meta["kwargs"][key.strip()] = parse_string_value(value.strip())
         else:
