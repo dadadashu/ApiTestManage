@@ -149,26 +149,30 @@
 </head>
 
 <body>
-  <h1>Test Report: {{html_report_name}}</h1>
+  <h1>测试报告: {{html_report_name}}</h1>
 
   <h2>Summary</h2>
   <table id="summary">
-    <tr>
-      <th>START AT</th>
-      <td colspan="4">{{time.start_datetime}}</td>
+      <tr>
+      <th>详细测试报告</th>
+          <td colspan="4"><a href="http://192.168.0.7:8093/#/manage/reportManage">http://192.168.0.7:8093/#/manage/reportManage</a>  (账户：tester/tester)</td>
     </tr>
     <tr>
-      <th>DURATION</th>
+      <th>开始时间</th>
+      <td colspan="4">{{time.start_at}}</td>
+    </tr>
+    <tr>
+      <th>运行时长</th>
       <td colspan="4">{{ '%0.3f'| format(time.duration|float) }} seconds</td>
     </tr>
     <tr>
-      <th>PLATFORM</th>
+      <th>环境</th>
       <td>HttpRunner {{ platform.httprunner_version }} </td>
       <td>{{ platform.python_version }} </td>
       <td colspan="2">{{ platform.platform }}</td>
     </tr>
     <tr>
-      <th>STAT</th>
+      <th>状态</th>
       <th colspan="2">TESTCASES (success/fail)</th>
       <th colspan="2">TESTSTEPS (success/fail/error/skip)</th>
     </tr>

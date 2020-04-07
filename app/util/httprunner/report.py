@@ -63,7 +63,7 @@ def get_summary(result):
         - summary["stat"]["unexpectedSuccesses"]
 
     summary["time"] = {
-        'start_at': result.start_at,
+        'start_at': datetime.fromtimestamp(int(result.start_at)).strftime('%Y-%m-%d %H:%M:%S'),
         'duration': result.duration
     }
     summary["records"] = result.records
