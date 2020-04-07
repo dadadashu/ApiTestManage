@@ -15,6 +15,7 @@ def before_request():
         current_app.logger.info('url:{} ,method:{},请求参数:{}'.format(request.url, request.method, request.json))
     except Exception as e:
         print(e)
+
     # print(request.remote_addr)
 
 
