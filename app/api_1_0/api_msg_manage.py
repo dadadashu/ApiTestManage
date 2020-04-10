@@ -199,9 +199,9 @@ def del_api_msg():
     api_msg_id = data.get('apiMsgId')
     _data = ApiMsg.query.filter_by(id=api_msg_id).first()
 
-    project_id = Module.query.filter_by(id=_data.module_id).first().project_id
-    if current_user.id != Project.query.filter_by(id=project_id).first().user_id:
-        return jsonify({'msg': '不能删除别人项目下的接口', 'status': 0})
+    # project_id = Module.query.filter_by(id=_data.module_id).first().project_id
+    # if current_user.id != Project.query.filter_by(id=project_id).first().user_id:
+    #     return jsonify({'msg': '不能删除别人项目下的接口', 'status': 0})
 
     # 同步删除接口信息下对应用例下的接口步骤信息
     for d in CaseData.query.filter_by(api_msg_id=api_msg_id).all():
