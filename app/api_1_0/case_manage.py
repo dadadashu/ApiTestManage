@@ -171,8 +171,8 @@ def del_case():
     data = request.json
     case_id = data.get('caseId')
     wait_del_case_data = Case.query.filter_by(id=case_id).first()
-    if current_user.id != Project.query.filter_by(id=wait_del_case_data.project_id).first().user_id:
-        return jsonify({'msg': '不能删除别人项目下的用例', 'status': 0})
+    # if current_user.id != Project.query.filter_by(id=wait_del_case_data.project_id).first().user_id:
+    #     return jsonify({'msg': '不能删除别人项目下的用例', 'status': 0})
 
     _del_data = CaseData.query.filter_by(case_id=case_id).all()
     if _del_data:
