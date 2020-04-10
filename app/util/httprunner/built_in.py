@@ -58,6 +58,10 @@ def multipart_content_type(multipart_encoder):
 def equals(check_value, expect_value):
     assert check_value == float(expect_value)
 
+##expect_value支持字符串运算，如7.13*9/10 会先进行字符串运算，结果再与check_value比较
+def equals_eval_string(check_value, expect_value):
+    assert check_value == float(eval(expect_value))
+
 def less_than(check_value, expect_value):
     assert check_value < float(expect_value)
 
