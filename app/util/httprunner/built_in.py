@@ -60,7 +60,7 @@ def equals(check_value, expect_value):
 
 ##expect_value支持字符串运算，如7.13*9/10 会先进行字符串运算，结果再与check_value比较
 def equals_eval_string(check_value, expect_value):
-    assert check_value == float(eval(expect_value))
+    assert check_value == float('%.3f' % eval(expect_value))
 
 def less_than(check_value, expect_value):
     assert check_value < float(expect_value)
@@ -79,6 +79,10 @@ def not_equals(check_value, expect_value):
 
 def string_equals(check_value, expect_value):
     assert builtin_str(check_value) == builtin_str(expect_value)
+
+#用于判非空，如check_value is_not None
+def is_not(check_value, expect_value):
+    assert check_value != expect_value
 
 def length_equals(check_value, expect_value):
     assert isinstance(expect_value, integer_types)
