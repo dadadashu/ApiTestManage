@@ -84,6 +84,11 @@ def string_equals(check_value, expect_value):
 def is_not(check_value, expect_value):
     assert check_value != expect_value
 
+#将校验值强制转换为字符串类型，再判断是否包含期望值
+def convert_str_contain_str(check_value, expect_value):
+    assert (str(check_value).find(expect_value)>=0) == True
+
+
 def length_equals(check_value, expect_value):
     assert isinstance(expect_value, integer_types)
     assert len(check_value) == expect_value
